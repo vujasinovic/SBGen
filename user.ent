@@ -1,0 +1,16 @@
+type string
+type int
+
+entity User {
+    firstName: string
+    lastName: string
+    username: string
+    password: string
+    address: Address
+}
+
+entity Address {
+    street: string
+    number: int
+    zipCode: int
+}
