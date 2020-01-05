@@ -1,11 +1,9 @@
-type string
-type int
 
 entity User {
     firstName: string
     lastName: string
     username: string
-    password: string
+    password: byte
     address: Address
 }
 
