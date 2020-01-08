@@ -1,0 +1,31 @@
+//Generated from Jinja2
+
+@Entity
+@Table(name = "{{entity.name}}")
+public class {{entity.name}} {
+    {% for property in entity.properties%}
+    {%if property.name == 'id'%}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private {{property.type | javatype}} {{property.name}};
+
+    {%else%}
+    private {{property.type | javatype}} {{property.name}};
+
+    {% endif %}
+    {% endfor %}
+    public {{entity.name}}() {
+
+    }
+
+    {% for property in entity.properties%}
+    public {{property.type | javatype}} get{{property.name | to_pascalcase}}() {
+        return {{property.name}};
+    }
+
+    public void set{{property.name | to_pascalcase}}({{property.type | javatype}} {{property.name}}) {
+        this.{{property.name}} = {{property.name}};
+    }
+
+    {% endfor %}
+}
