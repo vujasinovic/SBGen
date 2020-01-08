@@ -13,10 +13,6 @@ public class Address {
 
     private Integer zipCode;
 
-    public Address() {
-
-    }
-
     public Long getId() {
         return id;
     }

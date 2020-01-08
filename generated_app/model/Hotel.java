@@ -15,10 +15,6 @@ public class Hotel {
 
     private Address address;
 
-    public Hotel() {
-
-    }
-
     public Long getId() {
         return id;
     }

@@ -14,10 +14,6 @@ public class {{entity.name}} {
 
     {% endif %}
     {% endfor %}
-    public {{entity.name}}() {
-
-    }
-
     {% for property in entity.properties%}
     public {{property.type | javatype}} get{{property.name | to_pascalcase}}() {
         return {{property.name}};

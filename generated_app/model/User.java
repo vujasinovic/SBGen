@@ -19,10 +19,6 @@ public class User {
 
     private Boolean active;
 
-    public User() {
-
-    }
-
     public Long getId() {
         return id;
     }
