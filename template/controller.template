@@ -1,0 +1,60 @@
+package rs.ac.ftn.uns.jsd.foo.controller;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
+
+
+@RestController
+@RequestMapping("/api/{{ entity.name | to_lowercase}}s")
+public class {{ entity.name }}Controller {
+    private static final Logger LOGGER = LogManager.getLogger({{ entity.name }}Controller.class);
+
+    private final {{ entity.name }}Service {{ entity.name | to_lowercase }}Service;
+
+    public {{ entity.name }}Controller({{ entity.name }}Service {{ entity.name | to_lowercase }}Service) {
+        this.{{ entity.name | to_lowercase}}Service = {{ entity.name | to_lowercase }}Service;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<{{ entity.name }}>> findAll() {
+        return ResponseEntity.ok({{ entity.name | to_lowercase}}Service.findAll());
+    }
+
+    @PostMapping
+    public ResponseEntity create(@Valid @RequestBody {{ entity.name }} {{ entity.name | to_lowercase }}) {
+        return ResponseEntity.ok({{ entity.name | to_lowercase }}Service.save({{ entity.name | to_lowercase }}));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<{{ entity.name }}> getOne(@PathVariable Long id) {
+        return ResponseEntity.ok({{ entity.name | to_lowercase}}Service.getOne(id));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<{{ entity.name }}> update(@PathVariable Long id, @Valid @RequestBody {{ entity.name }} {{ entity.name | to_lowercase}}) {
+        if ({{ entity.name | to_lowercase}}Service.getOne(id) == null) {
+            LOGGER.error("Id " + id + " is not existed");
+            ResponseEntity.badRequest().build();
+        }
+
+        return ResponseEntity.ok({{ entity.name | to_lowercase }}Service.save({{ entity.name | to_lowercase }}));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable Long id) {
+        {{ entity.name }} {{entity.name | to_lowercase}} = {{ entity.name | to_lowercase }}Service.getOne(id);
+        if ({{entity.name | to_lowercase}} == null) {
+            LOGGER.error("Id " + id + " is not existed");
+            ResponseEntity.badRequest().build();
+        }
+
+        {{ entity.name | to_lowercase }}Service.delete({{ entity.name | to_lowercase}});
+
+        return ResponseEntity.ok().build();
+    }
+}

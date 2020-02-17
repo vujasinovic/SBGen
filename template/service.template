@@ -1,0 +1,11 @@
+package rs.ac.ftn.uns.jsd.foo.service;
+
+import rs.ac.ftn.uns.jsd.foo.model.{{entity.name}};
+
+public interface {{entity.name}}Service {
+    {{entity.name}} save({{entity.name}} {{entity.name | to_lowercase}});
+
+    {{entity.name}} getOne(Long id);
+
+    void delete({{entity.name}} {{entity.name | to_lowercase}});
+}

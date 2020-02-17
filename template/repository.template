@@ -1,0 +1,10 @@
+//Generated from Jinja2
+package rs.ac.ftn.uns.jsd.foo.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import rs.ac.ftn.uns.jsd.foo.model.{{entity.name}};
+
+@Repository
+public interface {{entity.name}}Repository extends JpaRepository<{{entity.name}}, Long> {
+    
+}

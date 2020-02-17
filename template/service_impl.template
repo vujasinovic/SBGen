@@ -1,0 +1,27 @@
+package rs.ac.ftn.uns.jsd.foo.service.implementation;
+
+import org.springframework.stereotype.Service;
+import rs.ac.ftn.uns.jsd.foo.model.{{entity.name}};
+import rs.ac.ftn.uns.jsd.foo.repository.{{entity.name}}Repository;
+import rs.ac.ftn.uns.jsd.foo.repository.{{entity.name}}Service;
+
+@Service
+public class {{entity.name}}ServiceImpl implements {{entity.name}}Service {
+    private final {{entity.name}}Repository {{entity.name | to_lowercase}}Repository;
+
+    public {{entity.name}}ServiceImpl({{entity.name}}Repository {{entity.name | to_lowercase}}Repository) {
+        this.{{entity.name | to_lowercase}}Repository = {{entity.name | to_lowercase}}Repository;
+    }
+
+    public {{entity.name}} save({{entity.name}} {{entity.name | to_lowercase}}) {
+        return {{entity.name | to_lowercase}}Repository.save({{entity.name | to_lowercase}});
+    }
+
+    public {{entity.name}} getOne(Long id) {
+        return {{entity.name | to_lowercase}}Repository.getOne(id);
+    }
+
+    public void delete({{entity.name}} {{entity.name | to_lowercase}}) {
+        return {{entity.name | to_lowercase}}Repository.delete({{entity.name | to_lowercase}});
+    }
+}

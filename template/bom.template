@@ -1,4 +1,10 @@
 //Generated from Jinja2
+package rs.ac.ftn.uns.jsd.foo.bom;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 @Table(name = "{{entity.name}}")
@@ -6,7 +12,7 @@ public class {{entity.name}} {
     {% for property in entity.properties%}
     {%if property.name == 'id'%}
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private {{property.type | javatype}} {{property.name}};
 
     {%else%}
